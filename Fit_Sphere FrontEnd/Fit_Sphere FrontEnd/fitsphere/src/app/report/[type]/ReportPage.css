@@ -1,0 +1,211 @@
+/* ReportPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --bg-app: #121212;
+  --bg-card: #1E1E1E;
+  --border: #333333;
+  --text-main: #FFFFFF;
+  --text-muted: #A0A0A0;
+}
+
+body {
+  background-color: var(--bg-app);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.report-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+/* --- 1. Top Navigation (The 6 Cards) --- */
+.nav-grid {
+  display: grid;
+  /* Creates responsive columns that wrap automatically */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.nav-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  user-select: none;
+}
+
+.nav-card:hover {
+  background: #252525;
+  transform: translateY(-2px);
+}
+
+/* The active state styles (border color is handled inline in TSX) */
+.nav-card.active {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.nav-icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.nav-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.nav-val {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-top: 5px;
+  display: block;
+}
+
+.nav-val small {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin-left: 2px;
+}
+
+/* --- 2. Main Dashboard Layout --- */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Chart takes 66%, Form takes 33% */
+  gap: 30px;
+  align-items: start;
+}
+
+.side-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 25px;
+}
+
+.card-header, 
+.form-card h2, 
+.history-card h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 15px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* --- Form Styles --- */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #777;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  background: #0d0d0d;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  box-sizing: border-box; 
+}
+
+input:focus {
+  outline: none;
+  border-color: #fff;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.add-btn:hover {
+  opacity: 0.9;
+}
+
+/* --- History List --- */
+.entry-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 250px;
+  overflow-y: auto; /* Adds scrollbar if list is too long */
+}
+
+.entry-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #2a2a2a;
+  font-size: 0.9rem;
+}
+
+.entry-item:last-child {
+  border-bottom: none;
+}
+
+/* --- Chart SVG Container --- */
+.chart-container {
+  width: 100%;
+  position: relative;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* Stack Chart and Form on mobile */
+  }
+}
