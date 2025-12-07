@@ -18,7 +18,7 @@
     "@mui/x-date-pickers": "^8.9.2",
     "all": "^0.0.0",
     "dayjs": "^1.11.13",
-    "next": "15.4.5",
+    "next": "^16.0.7",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-horizontal-datepicker": "^2.0.3",
